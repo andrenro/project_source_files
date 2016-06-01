@@ -35,8 +35,9 @@ $(document).ready(function() {
         }
 
         function showTotal(data) {
-            $('#chart_container').highcharts({
+            new HighCharts.Chart({ 
                 chart: {
+                    renderTo:"chart_container",
                     type: 'bar'
                 },
                 title: {
