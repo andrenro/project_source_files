@@ -5,8 +5,12 @@ $(document).ready(function() {
     ChartHandler = (function() {
 
         function initChart() {
-            $('#chart_container').highcharts({
+
+             chart_container = new HighCharts.Chart({ 
+            // $('#chart_container').highcharts({
+                
                 chart: {
+                    renderTo: "chart_container",
                     type: 'column',
 
                 },
