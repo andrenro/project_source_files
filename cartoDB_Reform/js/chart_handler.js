@@ -6,7 +6,7 @@ $(document).ready(function() {
 
         function initChart() {
 
-             chart_container = new HighCharts.Chart({ 
+             new HighCharts.Chart({ 
             // $('#chart_container').highcharts({
                 
                 chart: {
