@@ -18,6 +18,7 @@ html, body {
 
 
 .yes{
+  margin-top:0.6em;
   background-color:#003762 !important;
   padding:8px 14px;
   color:white;
@@ -31,6 +32,7 @@ html, body {
 }
 
 .no{
+  margin-top:0.6em;
   background-color: #940E19 !important;
   padding:8px 14px;
   color:white;
@@ -44,6 +46,7 @@ html, body {
 }
 
 .def{
+  margin-top:0.6em;
   padding:8px 14px;
   border-radius:2px;
   text-align: center;
@@ -51,4 +54,36 @@ html, body {
   vertical-align: middle;
   line-height: 1.42;
   display: inline-block;
+}
+
+* {
+  font-family: verdana;
+  font-size: 12px;
+}
+.datalist {
+  width: 100%;
+  border-width: 0 1px 1px 1px;
+  border-color: #ccc;
+  border-style: solid;
+}
+.datalist caption, .datalist tfoot td {
+  text-align: left;
+  color: #fff;
+  background-color: #666;
+}
+.datalist caption, .datalist th, .datalist td {
+  padding: 6px;
+  text-align: left;
+}
+.datalist td {
+  background-color: #eee;
+}
+.datalist th {
+  background-color: #ccc;
+}
+.datalist tbody tr:hover td {
+  background-color: #ddd;
+}
+.datalist th.number, .datalist td.number {
+  text-align: right;
 }
