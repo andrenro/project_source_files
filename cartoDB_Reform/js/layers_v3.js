@@ -25,7 +25,7 @@ $(document).ready(function() {
         for (var x = 0; x < data.rows.length; x++) {
 
           //Do not calculate stats from objects without valgdeltakelse set.
-          if(data.rows[x].valgdeltakelse !== null){
+          if(data.rows[x].valgdeltakelse !== null || data.rows[x].valgdeltakelse > 0){
             has_participation++;
             mean_participation += data.rows[x].valgdeltakelse;
           }
