@@ -10,14 +10,14 @@ $(document).ready(function() {
     function showTotal() {
       sublayers[0].setSQL("SELECT * FROM table_1_merge");
       sublayers[0].setCartoCSS("#table_1_merge[resultat='ja']{line-color: #000000;polygon-fill:#003762} #table_1_merge[resultat='nei']{line-color: #000000;polygon-fill:#940E19} #table_1_merge[resultat='']{line-color: #000000;polygon-fill:#ACACAC}");
-      cartodb.vis.Vis.addInfowindow(map, sublayers[0], ["valgdeltakelse","prosent_ja", "prosent_nei", "prosent_blankt", "kommune","kommentar","kommentar_2","kommentar_3"]);
+      cartodb.vis.Vis.addInfowindow(map, sublayers[0], ["kommunenummer","kommune","resultat","prosent_ja", "prosent_nei", "prosent_blankt","valgdeltakelse","status"]);
 
       var ja_count = 0;
       var nei_count = 0;
       var no_results = 0;
       var total = 0;
 
-      DataHandler.getData("andreasroeed", "SELECT resultat,valgdeltakelse,prosent_ja,prosent_nei,prosent_blankt,kommentar,kommentar_2,kommentar_3 FROM table_1_merge", function(data) {
+      DataHandler.getData("andreasroeed", "SELECT resultat,valgdeltakelse,prosent_ja,prosent_nei,prosent_blankt FROM table_1_merge", function(data) {
         var has_results = 0;
         var mean_participation = 0;
         var has_participation = 0;
