@@ -8,6 +8,7 @@ html, body {
   text-align: center;
 }
 #map {
+    z-index:1000;
     float:left;
     margin: 10px;       
     width: 100%;
