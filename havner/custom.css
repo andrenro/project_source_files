@@ -1,0 +1,86 @@
+html, body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+#content .maps{
+  padding: 20px;
+  text-align: center;
+}
+#map {
+    z-index: 1000;
+    float:left;
+    margin: 10px;       
+    width: 100%;
+    height: 500px;
+    border: 1px solid #ccc;
+    background-color: #f8f8f8;
+}
+
+
+.yes{
+  margin-top:0.6em;
+  background-color:#003762 !important;
+  padding:8px 14px;
+  color:white;
+  border:1px solid #003762;
+  border-radius:2px;
+  text-align: center;
+  font-size:14px;
+  vertical-align: middle;
+  line-height: 1.42;
+  display: inline-block;
+}
+
+.no{
+  margin-top:0.6em;
+  background-color: #940E19 !important;
+  padding:8px 14px;
+  color:white;
+  border-radius:2px;
+  border:1px solid #940E19;
+  text-align: center;
+  font-size:14px;
+  vertical-align: middle;
+  line-height: 1.42;
+  display: inline-block;
+}
+
+.def{
+  margin-top:0.6em;
+  padding:8px 14px;
+  border-radius:2px;
+  text-align: center;
+  font-size:14px;
+  vertical-align: middle;
+  line-height: 1.42;
+  display: inline-block;
+}
+
+.datalist {
+  width: 100%;
+  border-width: 0 1px 1px 1px;
+  border-color: #ccc;
+  border-style: solid;
+}
+.datalist caption, .datalist tfoot td {
+  text-align: left;
+  color: #fff;
+  background-color: #666;
+}
+.datalist caption, .datalist th, .datalist td {
+  padding: 6px;
+  text-align: left;
+}
+.datalist td {
+  background-color: #eee;
+}
+.datalist th {
+  background-color: #ccc;
+}
+.datalist tbody tr:hover td {
+  background-color: #ddd;
+}
+.datalist th.number, .datalist td.number {
+  text-align: right;
+}
