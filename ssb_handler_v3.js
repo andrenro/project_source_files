@@ -54,10 +54,45 @@ $(document).ready(function() {
                 document.getElementById("lunr-index").innerHTML = "Fant flere treff på søket,vennligst prøv et av disse søkeordene: <ul style='font-weight:bold;list-style-type:none' id='lunr-list'></ul>";
                 for (let x = 0; x < idx.length; x++) {
                     var node = document.createElement("li");
+                    node.setAttribute("class", "lunr-hits");
                     var textnode = document.createTextNode(kommuner[idx[x].ref].label);
                     node.appendChild(textnode);
                     document.getElementById("lunr-list").appendChild(node);
+
                 }
+                //TODO: refactor this
+                $(".lunr-hits").on("click", function(e) {
+                    e.preventDefault();
+                    let value = $(this).text();
+                    let searchedMunicipality = findMunicipality(next_ten_years, value);
+                    populationList(searchedMunicipality);
+                    populationComments(searchedMunicipality);
+                    economicStats(searchedMunicipality);
+
+                    objects = [];
+                    let values = dataset.Data({
+                        "Region": searchedMunicipality["kode"]
+                    });
+                    let categories = dataset.Dimension('ContentsCode').Category();
+                    let total = 0;
+                    if (values.length === categories.length) {
+                        for (let x = 0; x < values.length; x++) {
+                            objects[x] = {
+                                "category": categories[x].label,
+                                "value": values[x].value
+                            };
+                        }
+                    }
+
+                    let deltaQuarter = [objects[0].value, objects[objects.length - 1].value];
+                    PopulationChartHandler.showQuarterlyDelta(deltaQuarter);
+                    appendToHTML(searchedMunicipality["kommune"], objects, "datalist");
+
+                    if (document.getElementById("lunr-index").innerHTML != "") {
+                        document.getElementById("lunr-index").innerHTML = "";
+                    }
+
+                });
             } else if (idx.length == 1) {
                 //Only return first result
                 return {
@@ -338,6 +373,8 @@ $(document).ready(function() {
 
 
     });
+
+
 
     //Hide search field warnings..
     $("#no-results").css("visibility", "hidden")
