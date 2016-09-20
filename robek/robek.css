@@ -1,0 +1,65 @@
+
+.chart rect {
+  fill: steelblue;
+}
+
+.chart text {
+  fill: white;
+  font: 10px sans-serif;
+  text-anchor: end;
+}
+
+.lunr-element{
+	color: #264B6F;
+}
+
+.lunr-element:hover{
+	text-decoration:underline;
+	cursor:pointer;	
+}
+
+.lunr-ul{
+	list-style-type: none;
+	font-weight: bold;
+}
+
+#robek-comments{
+	font-size:1.2em;
+}
+#robek-comments-top{
+	font-size:1.2em;
+}
+
+#latest-in{
+	margin-top: 0.5em;
+	font-size:1.2em;	
+}
+#latest-out{
+	margin-top: 0.5em;
+	font-size:1.2em;
+}
+#total-in-register{
+	font-size:1.2em;
+}
+
+.dates-li{
+	font-weight: bold;
+}
+
+.li-elem{
+	font-size:1.2em;
+	font-weight: bold;
+}
+
+canvas{
+	z-index:1000;
+}
+
+#map{
+	z-index:1000;
+}
+
+#search-button{
+	padding-left:2em;
+	padding-right:2em;
+}
