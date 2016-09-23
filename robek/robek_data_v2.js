@@ -235,7 +235,7 @@ $(document).ready(function() {
             }, {
                 "bokstaver": "",
                 "kommunenr": 137,
-                "kommune": "Våler",
+                "kommune": "Våler (Østf.)",
                 "fylke": "Østfold",
                 "antall_aar": 0,
                 "antall_ganger": 0,
@@ -511,7 +511,7 @@ $(document).ready(function() {
             }, {
                 "bokstaver": "",
                 "kommunenr": 236,
-                "kommune": "Nes",
+                "kommune": "Nes (Akers.)",
                 "fylke": "Akershus",
                 "antall_aar": 2.88,
                 "antall_ganger": 1,
@@ -741,7 +741,7 @@ $(document).ready(function() {
             }, {
                 "bokstaver": "",
                 "kommunenr": 426,
-                "kommune": "Våler",
+                "kommune": "Våler (Hedm.)",
                 "fylke": "Hedmark",
                 "antall_aar": 7.53,
                 "antall_ganger": 1,
@@ -1326,7 +1326,7 @@ $(document).ready(function() {
             }, {
                 "bokstaver": "",
                 "kommunenr": 616,
-                "kommune": "Nes",
+                "kommune": "Nes (Busk.)",
                 "fylke": "Buskerud",
                 "antall_aar": 0,
                 "antall_ganger": 0,
@@ -1636,7 +1636,7 @@ $(document).ready(function() {
             }, {
                 "bokstaver": "",
                 "kommunenr": 713,
-                "kommune": "Sande",
+                "kommune": "Sande (Vestf.)",
                 "fylke": "Vestfold",
                 "antall_aar": 0,
                 "antall_ganger": 0,
@@ -1664,7 +1664,7 @@ $(document).ready(function() {
             }, {
                 "bokstaver": "",
                 "kommunenr": 716,
-                "kommune": "Re",
+                "kommune": "Re (Vestf.)",
                 "fylke": "Vestfold",
                 "antall_aar": 0,
                 "antall_ganger": 0,
@@ -1857,7 +1857,7 @@ $(document).ready(function() {
             }, {
                 "bokstaver": "c",
                 "kommunenr": 821,
-                "kommune": "Bø",
+                "kommune": "Bø (Telem.)",
                 "fylke": "Telemark",
                 "antall_aar": 12.02,
                 "antall_ganger": 2,
@@ -3279,7 +3279,7 @@ $(document).ready(function() {
             }, {
                 "bokstaver": "",
                 "kommunenr": 1417,
-                "kommune": "Vik",
+                "kommune": "Vik (S. og F)",
                 "fylke": "Sogn og Fjordane",
                 "antall_aar": 13.82,
                 "antall_ganger": 2,
@@ -3700,7 +3700,7 @@ $(document).ready(function() {
             }, {
                 "bokstaver": "",
                 "kommunenr": 1515,
-                "kommune": "Herøy",
+                "kommune": "Herøy (M. og R.)",
                 "fylke": "Møre og Romsdal",
                 "antall_aar": 0.81,
                 "antall_ganger": 1,
@@ -5011,7 +5011,7 @@ $(document).ready(function() {
             }, {
                 "bokstaver": "",
                 "kommunenr": 1818,
-                "kommune": "Herøy",
+                "kommune": "Herøy (Nordl.)",
                 "fylke": "Nordland",
                 "antall_aar": 0.6,
                 "antall_ganger": 1,
@@ -5481,7 +5481,7 @@ $(document).ready(function() {
             }, {
                 "bokstaver": "",
                 "kommunenr": 1867,
-                "kommune": "Bø",
+                "kommune": "Bø (Nordl.)",
                 "fylke": "Nordland",
                 "antall_aar": 4.59,
                 "antall_ganger": 1,
