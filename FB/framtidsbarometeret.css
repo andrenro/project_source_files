@@ -7,7 +7,10 @@ td{
 
 thead th:hover{
   cursor:pointer;
+}
 
+table tr th{
+  background: rgba(0, 0, 0, 0.50) !important;
 }
 
 /*
