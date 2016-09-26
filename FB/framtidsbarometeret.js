@@ -35,7 +35,7 @@ $(document).ready(function() {
 
     showLoader();
 
-    d3.json("http://api.kr24.no/framtidsbarometeret.json", function(error, data) {
+    d3.json("https://api.myjson.com/bins/5bxz4", function(error, data) {
         if (error) throw error;
 
         hideLoader();
