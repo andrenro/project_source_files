@@ -1,6 +1,7 @@
 //Global Map Object
 var map;
-var layerUrl = "https://andreasroeed.cartodb.com/api/v2/viz/a2f54382-2e0e-11e6-8140-0e31c9be1b51/viz.json";
+//var layerUrl = "https://andreasroeed.cartodb.com/api/v2/viz/a2f54382-2e0e-11e6-8140-0e31c9be1b51/viz.json";
+var layerUrl = "https://andreasroeed.carto.com/api/v2/viz/65c67724-847b-11e6-844f-0e3ebc282e83/viz.json"
 var sublayers = [];
 
 
