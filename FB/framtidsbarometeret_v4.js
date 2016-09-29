@@ -3,7 +3,6 @@ $(document).ready(function() {
 
     function setComments(municipality) {
 
-        console.log(municipality);
         //Object containing all comments
         var comments = {}
         var name = municipality["Kommune"];
@@ -237,7 +236,7 @@ $(document).ready(function() {
     }
 
 
-    // var columnTitles = ["Knr", "Kommune", "Folketall", "Barnehage", "Grunnskole", "25_66_år", "Sysselsatte", "Eldre", "Driftsresultat", "Lånegjeld", "Disp.fond", "Kostnadsnivå", "Inntektsnivå"];
+  
     var columns = ["Knr", "Kommune", "Folketall", "Grunnskole", "Eldre", "Driftsresultat", "Disp.fond", "Kostnadsnivå"];
     //0 for ascending, 1 for descending. 
     var sortingOrder = 0;
