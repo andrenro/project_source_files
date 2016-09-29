@@ -43,6 +43,9 @@ table tr th{
   border: 1px solid #ffffff !important;
   color: #ffffff !important;
 }
+table tr th:hover{
+  background: rgba(0, 0, 0, 0.80) !important;
+}
 
 thead th{
   padding:12px 12px !important;
