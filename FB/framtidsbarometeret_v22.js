@@ -225,7 +225,7 @@ $(document).ready(function() {
             corr_income_level = "";
         }
 
-        comments["name"]= name;
+        comments["name"] = name;
         comments["knr"] = knr;
         comments["inhabitants"] = inhabitants;
         comments["students"] = students;
@@ -272,7 +272,7 @@ $(document).ready(function() {
 
     showLoader();
 
-    d3.json("https://api.myjson.com/bins/3tg0k", function(error, data) {
+    d3.json("https://api.myjson.com/bins/wf5g", function(error, data) {
         if (error) throw error;
 
         hideLoader();
