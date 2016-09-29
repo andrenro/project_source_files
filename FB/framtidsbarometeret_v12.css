@@ -11,10 +11,6 @@ td:hover{
 
 }
 
-html{
-  font-family: "AmplitudeWide",Arial,serif;
-}
-
 thead th:hover{
   cursor:pointer;
 }
@@ -91,7 +87,8 @@ tr td{
 }
 
 h4{
- font-weight:bold !important; 
+ font-weight:bold !important;
+ font-family: "AmplitudeWide",Arial,serif;
 }
 
 
