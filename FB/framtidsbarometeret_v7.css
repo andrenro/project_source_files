@@ -11,6 +11,10 @@ td:hover{
 
 }
 
+html{
+  font-family: "AmplitudeWide",Arial,serif;
+}
+
 
 
 thead th:hover{
@@ -90,5 +94,6 @@ tr td{
 
 h4{
  font-weight:bold !important; 
-  
 }
+
+
