@@ -300,6 +300,8 @@ $(document).ready(function() {
                     cssClass = "two";
                 } else if (row[column] >= 1) {
                     cssClass = "one";
+                }else{
+                    cssClass = "blank";
                 }
 
                 //cssClass will loose its effect when sorting, due to the fact that the class is bound to the data-object.
