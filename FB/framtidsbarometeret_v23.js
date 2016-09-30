@@ -371,7 +371,6 @@ $(document).ready(function() {
 
     //Opens modal popup and adds textual info
     function populateModal(data) {
-        jQuery.noConflict();
         $("#inhabitants").html("<p>" + data["inhabitants"] + "</p>");
         $("#students").html("<p>" + data["students"] + "</p>");
         $("#elders").html("<p>" + data["elders"] + "</p>");
