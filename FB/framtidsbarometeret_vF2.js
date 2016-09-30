@@ -277,7 +277,7 @@ $(document).ready(function() {
 
     showLoader();
 
-    d3.json("https://api.myjson.com/bins/wf5g", function(error, data) {
+    d3.json("https://api.myjson.com/bins/14ng4", function(error, data) {
         if (error) throw error;
 
         hideLoader();
