@@ -1,5 +1,24 @@
 $(document).ready(function() {
 
+    DataManager = (function() {
+
+        var data;
+
+        function setData(data) {
+            this.data = data;
+        }
+
+        function getData() {
+            return this.data;
+        }
+
+        return {
+            getData: getData,
+            setData: setData
+        }
+
+
+    })();
 
     function setComments(municipality) {
 
@@ -138,7 +157,12 @@ $(document).ready(function() {
             distributable_reserve = "Ved utgangen av økonomiplanperioden er det ikke usannsynlig at kommunen har et <strong>oppsamlet underskudd.</strong> ";
         } else if (municipality["Disp.fond"] = 1) {
 
-            distributable_reserve = "Ved utgangen av økonomiplanperioden er <strong>" + name + "</strong> blant dem som har størst risiko for å ha et <strong>oppsamlet underskudd.</strong> ";
+            if(municipality["Kommune"] == "Ringerike"){
+                distributable_reserve = "Ved utgangen av økonomiplanperioden er <strong>" + name+"</strong> blant dem som har størst risiko for å ha et oppsamlet underskudd, om vi ser på utviklingen i disposisjonsfondet isolert. Korrigert netto driftsresultat trekker imidlertid i motsatt retning. Svært få kommuner er i denne situasjonen, det er per nå uklart om kommunen er på vei mot en solid eller en svak økonomi."
+            }else{
+                distributable_reserve = "Ved utgangen av økonomiplanperioden er <strong>" + name + "</strong> blant dem som har størst risiko for å ha et <strong>oppsamlet underskudd.</strong> ";
+            }
+
         } else {
             distributable_reserve = "";
         }
@@ -206,7 +230,7 @@ $(document).ready(function() {
             corr_income_level = "";
         }
 
-        comments["name"]= name;
+        comments["name"] = name;
         comments["knr"] = knr;
         comments["inhabitants"] = inhabitants;
         comments["students"] = students;
@@ -236,7 +260,7 @@ $(document).ready(function() {
     }
 
 
-  
+
     var columns = ["Knr", "Kommune", "Folketall", "Grunnskole", "Eldre", "Driftsresultat", "Disp.fond", "Kostnadsnivå"];
     //0 for ascending, 1 for descending. 
     var sortingOrder = 0;
@@ -253,16 +277,26 @@ $(document).ready(function() {
 
     showLoader();
 
-    d3.json("https://api.myjson.com/bins/5bxz4", function(error, data) {
+    d3.json("https://api.myjson.com/bins/wf5g", function(error, data) {
         if (error) throw error;
 
         hideLoader();
-        // var parsedRows = d3.jsonParse(jsonData);
-        // function tabulate(data, columns) {
+        DataManager.setData(data);
+        arrangeTable(0, DataManager.getData());
+
+    });
+
+
+    function arrangeTable(mode, data) {
+
+        if (mode === 1) {
+            $("#data-table").html("");
+        }
         var counter = 0;
         var table = d3.select('div#data-table').append('table');
         var thead = table.append('thead')
         var tbody = table.append('tbody');
+
 
         thead.append("tr").selectAll("th").data(columns).enter().append("th").text(function(column) {
             return column
@@ -300,7 +334,7 @@ $(document).ready(function() {
                     cssClass = "two";
                 } else if (row[column] >= 1) {
                     cssClass = "one";
-                }else{
+                } else {
                     cssClass = "blank";
                 }
 
@@ -320,31 +354,33 @@ $(document).ready(function() {
 
         d3.selectAll("thead th").data(data).on("click", function(k) {
             var key = this.innerText;
+            var data = DataManager.getData();
 
-            rows.sort(function(a, b) {
+            var sorted = data.sort(function(a, b) {
                 if (sortingOrder > 0) {
                     return numberCompareDescending(a[key], b[key]);
                 }
                 return numberCompareAscending(a[key], b[key]);
             });
 
+            arrangeTable(1, sorted);
         });
-        // }
 
-    });
+
+    }
 
     //Opens modal popup and adds textual info
     function populateModal(data) {
+        jQuery.noConflict();
+        $("#inhabitants").html("<p>" + data["inhabitants"] + "</p>");
+        $("#students").html("<p>" + data["students"] + "</p>");
+        $("#elders").html("<p>" + data["elders"] + "</p>");
+        $("#operating_profit").html("<p>" + data["operating_profit"] + "</p>");
+        $("#distributable_reserve").html("<p>" + data["distributable_reserve"] + "</p>");
+        $("#costs").html("<p>" + data["costs"] + "</p>");
+        $("#corr_income_level").html("<p>" + data["corr_income_level"] + "</p>");
 
-        $("#inhabitants").html("<p>"+data["inhabitants"]+"</p>");
-        $("#students").html("<p>"+data["students"]+"</p>");
-        $("#elders").html("<p>"+data["elders"]+"</p>");
-        $("#operating_profit").html("<p>"+data["operating_profit"]+"</p>");
-        $("#distributable_reserve").html("<p>"+data["distributable_reserve"]+"</p>");
-        $("#costs").html("<p>"+data["costs"]+"</p>");
-        $("#corr_income_level").html("<p>"+data["corr_income_level"]+"</p>");
-
-        $(".modal-title").html("<p>"+data["name"] + " ("+data["knr"]+")");
+        $(".modal-title").html("<p>" + data["name"] + " (" + data["knr"] + ")");
         $("#myModal").modal();
 
     }
