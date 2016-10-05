@@ -38,29 +38,57 @@ $(document).ready(function() {
     topAndBottomGrowth = function() {
         //Max-muni and min-muni
 
-
         var maxMuni = "";
         var minMuni = "";
+
         var minP = 0;
         var maxP = 0;
 
+        var maxAbsMuni = "";
+        var minAbsMuni = "";
+
+        var minAbsKode = "";
+        var maxAbsKode = "";
+
+        var minAbsDiff = 0;
+        var maxAbsDiff = 0;
+
+        var minAbsPercentage = 0;
+        var maxAbsPercentage = 0;
+
         // var categories = dataset.Dimension('ContentsCode').Category();
         // console.log(kommuner);
-        for (var y = 0; y < koder.id.length; y++){
+        for (var y = 0; y < koder.id.length; y++) {
             // console.log(koder.id[y]);
             var values = dataset.Data({
                 "Region": koder.id[y]
             });
-           
-            var percentage = MathHandler.percentageIncrease(values[0].value,values[10].value);
 
-            if(percentage < minP)  {
+            var diff = (values[10].value - values[0].value);
+
+            //For absolute values
+            if (diff < minAbsDiff) {
+                minAbsDiff = diff;
+                minAbsMuni = kommuner[y].label;
+                minAbsKode = koder.id[y];
+                minAbsPercentage = MathHandler.percentageIncrease(values[0].value, values[10].value);
+            } else if (diff > maxAbsDiff) {
+                maxAbsDiff = diff;
+                maxAbsMuni = kommuner[y].label;
+                maxAbsKode = koder.id[y];
+                maxAbsPercentage = MathHandler.percentageIncrease(values[0].value, values[10].value);
+            }
+
+            //For relative values
+            var percentage = MathHandler.percentageIncrease(values[0].value, values[10].value);
+
+            if (percentage < minP) {
                 minP = percentage;
                 minCode = koder.id[y]
                 minMuni = kommuner[y].label;
                 minDiff = Math.abs(values[10].value - values[0].value);
-            }
-            else if(percentage > maxP){
+
+            } else if (percentage > maxP) {
                 maxP = percentage;
                 maxCode = koder.id[y];
                 maxMuni = kommuner[y].label;
@@ -81,8 +109,22 @@ $(document).ready(function() {
             percentage: maxP
         }
 
-        $("#lowest-growth").html("<strong>"+min.municipality+"</strong> har hatt størst negativ folkevekst det siste kvartalet, relativt til resten av landet. Folketallet i <strong>"+min.municipality+"</strong> har blitt redusert med <strong>"+min.inhabitants+"</strong> personer, sist kvartal. Dette utgjør en nedgang på <strong>"+Math.abs(min.percentage).toFixed(2)+"%</strong>")
-        $("#highest-growth").html("<strong>"+max.municipality+"</strong> har hatt størst positiv folkevekst det siste kvartalet, relativt til resten av landet. Folketallet i <strong>"+max.municipality+"</strong> har økt med <strong>"+max.inhabitants+"</strong> personer, sist kvartal. Dette utgjør en oppgang på <strong>"+Math.abs(max.percentage).toFixed(2)+"%</strong>");
+        var maxAbs = {
+            code: maxAbsKode,
+            municipality: maxAbsMuni,
+            inhabitants: maxAbsDiff,
+            percentage: maxAbsPercentage
+        }
+        var minAbs = {
+            code: minAbsKode,
+            municipality: minAbsMuni,
+            inhabitants: Math.abs(minAbsDiff),
+            percentage: minAbsPercentage
+        }
+        $("#lowest-growth").html("<strong>" + min.municipality + "</strong> har hatt størst negativ folkevekst det siste kvartalet, hvis vi ser på den <i>relative</i> endringen. Folketallet i <strong>" + min.municipality + "</strong> har blitt redusert med <strong>" + min.inhabitants + "</strong> personer, sist kvartal. Dette utgjør en nedgang på <strong>" + Math.abs(min.percentage).toFixed(2) + "%</strong>")
+        $("#highest-growth").html("<strong>" + max.municipality + "</strong> har hatt størst positiv folkevekst det siste kvartalet, hvis vi ser på den <i>relative</i> endringen. Folketallet i <strong>" + max.municipality + "</strong> har økt med <strong>" + max.inhabitants + "</strong> personer, sist kvartal. Dette utgjør en oppgang på <strong>" + Math.abs(max.percentage).toFixed(2) + "%</strong>");
+        $("#low-abs-growth").html("<strong>" + minAbs.municipality + "</strong> har hatt størst negativ folkevekst det siste kvartalet, hvis vi ser på den <i>absolutte</i> endringen i antall innbyggere. Folketallet i <strong>" + minAbs.municipality + "</strong> har blitt redusert med <strong>" + minAbs.inhabitants + "</strong> personer, sist kvartal. Dette utgjør en nedgang på <strong>" + Math.abs(minAbs.percentage).toFixed(2) + "%</strong>")
+        $("#high-abs-growth").html("<strong>" + maxAbs.municipality + "</strong> har hatt størst positiv folkevekst det siste kvartalet, hvis vi ser på den <i>absolutte</i> endringen i antall innbyggere. Folketallet i <strong>" + maxAbs.municipality + "</strong> har økt med <strong>" + maxAbs.inhabitants + "</strong> personer, sist kvartal. Dette utgjør en oppgang på <strong>" + Math.abs(maxAbs.percentage).toFixed(2) + "%</strong>");
     }
 
 
@@ -432,7 +474,7 @@ $(document).ready(function() {
     $("#no-results").css("visibility", "hidden")
     $("#needs-and-income-header").html("Utgiftsbehov og innbyggertilskudd i " + new Date().getFullYear());
 
-    //topAndBottomGrowth();
+    topAndBottomGrowth();
     //INITIALIZE the whole thing
     RankingsHandler.init();
     initRandomStats();
