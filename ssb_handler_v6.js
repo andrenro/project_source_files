@@ -432,7 +432,7 @@ $(document).ready(function() {
     $("#no-results").css("visibility", "hidden")
     $("#needs-and-income-header").html("Utgiftsbehov og innbyggertilskudd i " + new Date().getFullYear());
 
-    topAndBottomGrowth();
+    //topAndBottomGrowth();
     //INITIALIZE the whole thing
     RankingsHandler.init();
     initRandomStats();
