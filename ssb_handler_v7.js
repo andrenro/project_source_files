@@ -270,7 +270,7 @@ $(document).ready(function() {
             var chartData = [];
             var fundingPerInhabitant = 0.0;
             //Yearly regulated values that will be updated every year by SSB
-            const offsetPerInhabitant = 22668;
+            const offsetPerInhabitant = 23287;
 
             if (data) {
                 $(".inhabitant-funding-offset").html("<strong>" + offsetPerInhabitant + "</strong>");
